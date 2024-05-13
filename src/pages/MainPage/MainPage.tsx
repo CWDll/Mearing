@@ -1,5 +1,6 @@
 import React from "react";
 import * as S from "./style"
+import { useNavigate } from "react-router-dom";
 
 // 컴포넌트 가져오기
 import TitleBar from "../../components/TitleBar";
@@ -7,7 +8,7 @@ import Button from "../../components/Button";
 import ContentBox from "../../components/ContentBox";
 
 const MainPage: React.FC = () => {
-  
+  const navigate = useNavigate();
   // 버튼 클릭 이벤트
   const handleClick = (): void => {
     alert("Button clicked!");
@@ -29,7 +30,6 @@ const MainPage: React.FC = () => {
     date: string;
     content: string;
 }
-
 interface ContactData {
     type: 'contact';
     name: string;
@@ -58,6 +58,9 @@ type DummyDataType = DateData | ContactData;
     { type: 'date', date: "2024-05-20", content: "신규 프로젝트 미팅" },
     { type: 'contact', name: "제갈량", url: "https://www.wisdom.net", phoneNumber: "010-8765-4321" }
 ];
+  const goToCenterPage = (): void => {
+    navigate("/center");
+  }
 
 
   return (
@@ -75,7 +78,7 @@ type DummyDataType = DateData | ContactData;
       </S.SavedChatContainer>
       <S.ButtonContainer>
         <Button onClick={handleClick} disabled={false} children="Chat"/>
-        <Button onClick={handleClick} disabled={false} children="Center"/>
+        <Button onClick={goToCenterPage} disabled={false} children="Center"/>
       </S.ButtonContainer>
     </S.MainContainer>
   );

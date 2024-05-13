@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 // global-setting
 import { GlobalStyle } from "./shared/global";
@@ -17,12 +16,7 @@ root.render(
   // global-setting
   <ThemeProvider theme={theme}>
     <GlobalStyle />
-
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-      </Routes>
-    </BrowserRouter>
+      <App />
   </ThemeProvider>
 );
 
