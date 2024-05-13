@@ -41,9 +41,6 @@ const GeoButton: React.FC = () => {
         });
     };
 
-    // 테스트용 콘솔 로그
-    console.log('API Key:', process.env.REACT_APP_KAKAO_API_KEY);
-
     // 역지오코딩 함수(카카오 API 호출)
     const reverseGeocode = async (lat: string, lng: string) => {
         const apiKey = process.env.REACT_APP_KAKAO_API_KEY; // 환경 변수 사용

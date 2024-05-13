@@ -47,6 +47,7 @@ interface ContactData {
         {dummyData.map((item, index) => (
             <ContentBox key={index} name={item.name} url={item.url} phoneNumber={item.phoneNumber} />
         ))}
+        <a href="tel:010-4640-4656">전화 걸기</a>
       </S.CenterBodyContainer>
     </S.CenterContainer>
   );
