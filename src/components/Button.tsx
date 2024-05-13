@@ -23,6 +23,8 @@ const Button: React.FC<ButtonProps> = ({ onClick, disabled, children }) => {
 };
 
 export default Button;
+
+// 버튼 스타일링
 const PrimaryButton = styled(Button)`
     /* Primary 버튼 스타일을 여기에 작성하세요 */
 `;
