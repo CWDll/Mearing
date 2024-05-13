@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const ButtonWrapper = styled.button`
     width: 10em;
-    height: 3em;
+    height: 4em;
     border-radius: 5px;
     border: 1px solid black;
 `;

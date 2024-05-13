@@ -13,7 +13,7 @@ export const SavedChatContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 80%;
-  height: 23em;
+  height: 25em;
   border: 1px solid black;
 `;
 

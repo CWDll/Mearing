@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const TitleContainer = styled.div`
     width: 80%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
     background-color: #f0f0f0;
 `;
 
@@ -13,10 +13,17 @@ const TitleText = styled.h1`
     color: #333;
 `;
 
-const TitleBar: React.FC<{ title: string }> = ({ title }) => {
+const DateText = styled.span`
+    font-size: 16px;
+    color: #666;
+    padding-left: 10px;
+`;
+
+// 타이틀과 선택적 날짜를 받는 컴포넌트 정의
+const TitleBar: React.FC<{ title: string; date?: string }> = ({ title, date }) => {
     return (
         <TitleContainer>
-            <TitleText>{title}</TitleText>
+            <TitleText>{title}{date && <DateText>{date}</DateText>}</TitleText>
         </TitleContainer>
     );
 };
