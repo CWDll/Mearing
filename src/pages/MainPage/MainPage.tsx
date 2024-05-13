@@ -1,8 +1,10 @@
 import React from "react";
 import * as S from "./style"
 
+// 컴포넌트 가져오기
 import TitleBar from "../../components/TitleBar";
 import Button from "../../components/Button";
+import ContentBox from "../../components/ContentBox";
 
 const MainPage: React.FC = () => {
   
@@ -26,7 +28,10 @@ const MainPage: React.FC = () => {
     <S.MainContainer>
       <TitleBar title="date" date={dateInfo}/>
       {/* map 함수를 사용하여 더미데이터(저장한 채팅 내역)을 넣을 예정 */}
-      <S.SavedChatContainer></S.SavedChatContainer>
+      <S.SavedChatContainer>
+        <ContentBox date="2021-09-01" content="안녕하세요!"/>
+        <ContentBox name="홍길동" url="https://www.naver.com" phoneNumber="010-1234-5678"/>
+      </S.SavedChatContainer>
       <S.ButtonContainer>
         <Button onClick={handleClick} disabled={false} children="Chat"/>
         <Button onClick={handleClick} disabled={false} children="Center"/>
