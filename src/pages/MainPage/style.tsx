@@ -15,6 +15,7 @@ export const SavedChatContainer = styled.div`
   width: 80%;
   height: 25em;
   border: 1px solid black;
+  overflow-y: auto;
 `;
 
 export const ButtonContainer = styled.div`

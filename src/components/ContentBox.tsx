@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface DateContentProps {
     date: string;
@@ -14,11 +14,16 @@ interface ContactInfoProps {
 
 type ContentBoxProps = DateContentProps | ContactInfoProps;
 
-const ContentBoxWrapper = styled.div`
+// 스타일을 조건부로 적용하는 함수
+const contentBoxStyle = css<{ type: 'date' | 'contact' }>`
     padding: 20px;
-    border: 1px solid #ccc;
     margin-bottom: 10px;
-    background-color: #f8f8f8;
+    border: 1px solid ${({ type }) => (type === 'date' ? '#4CAF50' : '#2196F3')};
+    background-color: ${({ type }) => (type === 'date' ? '#C8E6C9' : '#BBDEFB')};
+`;
+
+const ContentBoxWrapper = styled.div<{ type: 'date' | 'contact' }>`
+    ${contentBoxStyle}
 `;
 
 const isDateContentProps = (props: any): props is DateContentProps => {
@@ -31,7 +36,7 @@ const isContactInfoProps = (props: any): props is ContactInfoProps => {
 
 const ContentBox: React.FC<ContentBoxProps> = (props) => {
     return (
-        <ContentBoxWrapper>
+        <ContentBoxWrapper type={isDateContentProps(props) ? 'date' : 'contact'}>
             {isDateContentProps(props) && (
                 <>
                     <div>Date: {props.date}</div>
