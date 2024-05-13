@@ -16,3 +16,13 @@ export const Header = styled.div`
   height: 5em;
   border: 1px solid black;
   `;
+
+  export const CenterBodyContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 25em;
+    border: 1px solid black;
+    overflow-y: auto;
+    `;

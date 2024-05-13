@@ -29,7 +29,7 @@ const MainPage: React.FC = () => {
     type: 'date';
     date: string;
     content: string;
-}
+  }
 interface ContactData {
     type: 'contact';
     name: string;
