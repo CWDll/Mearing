@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 // 컴포넌트 가져오기
 import TitleBar from "../../components/TitleBar";
 import ContentBox from "../../components/ContentBox";
+import GeoButton from "../../components/GeoButton";
 
 const CenterPage: React.FC = () => {
   const navigate = useNavigate();
@@ -40,7 +41,8 @@ interface ContactData {
         <button onClick={goToBack}>back</button>
         <TitleBar title="도움 시설"/>
       </S.Header>
-      <TitleBar title="위치 정보"/>
+      {/* <TitleBar title="위치 정보"/> */}
+      <GeoButton/>
       <S.CenterBodyContainer>
         {dummyData.map((item, index) => (
             <ContentBox key={index} name={item.name} url={item.url} phoneNumber={item.phoneNumber} />
