@@ -45,6 +45,11 @@ const MainPage: React.FC = () => {
       { type: 'date', date: "2024-05-20", content: "신규 프로젝트 미팅" }
     ];
 
+// chatbot버튼 클릭 이벤트
+  const goToChatbotPage = (): void => {
+    navigate("/chatbot");
+  };
+
 // center버튼 클릭 이벤트
   const goToCenterPage = (): void => {
     navigate("/center");
@@ -53,7 +58,7 @@ const MainPage: React.FC = () => {
 
   return (
     <S.MainContainer>
-      <TitleBar title="date" date={dateInfo}/>
+      <TitleBar title="Mearing" date={dateInfo}/>
       {/* map 함수를 사용하여 더미데이터(저장한 채팅 내역)을 넣을 예정 */}
       <S.SavedChatContainer>
       {dummyData.map((item, index) => (
@@ -61,7 +66,7 @@ const MainPage: React.FC = () => {
         ))}
       </S.SavedChatContainer>
       <S.ButtonContainer>
-        <Button onClick={handleClick} disabled={false} children="Chat"/>
+        <Button onClick={goToChatbotPage} disabled={false} children="Chat"/>
         <Button onClick={goToCenterPage} disabled={false} children="Center"/>
       </S.ButtonContainer>
     </S.MainContainer>

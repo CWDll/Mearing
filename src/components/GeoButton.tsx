@@ -79,7 +79,7 @@ const GeoButton: React.FC = () => {
                             <p>Latitude: {location.coordinates.lat}, Longitude: {location.coordinates.lng}</p>
                             <p>Address: {location.address || 'Address not loaded'}</p>
                           </>
-                    : <p>Location data not loaded yet.</p>}
+                    : <p>[Loading...]Location data not loaded yet.</p>}
             </div>
         </div>
     );
