@@ -23,6 +23,11 @@ const ChatbotPage: React.FC = () => {
       <S.ChatMsgContainer>
         {Array(10).fill(<div>message</div>)}
       </S.ChatMsgContainer>
+      <S.UsetActionContainer>
+        <S.MsgInput type="text" />
+        <S.MsgSendButton>전송</S.MsgSendButton>
+        <S.STTButton>STT버튼</S.STTButton>
+      </S.UsetActionContainer>
     </S.ChatbotContainer>
   );
 };

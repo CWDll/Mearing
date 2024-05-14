@@ -25,3 +25,25 @@ export const ChatMsgContainer = styled.div`
   height: 25em;
   border: 1px solid black;
 `;
+
+export const UsetActionContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 3em;
+  border: 1px solid red;
+`;
+
+export const MsgInput = styled.input`
+  flex: 4;
+`;
+
+export const MsgSendButton = styled.button`
+  flex: 1;
+  margin-right: 1em;
+`;
+
+export const STTButton = styled.button`
+  flex: 2;
+`;
