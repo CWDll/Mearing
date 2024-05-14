@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 // 컴포넌트 가져오기
 import TitleBar from "../../components/TitleBar";
 import { SecondaryButton } from "../../components/Button";
+import HelpModal from "../../components/HelpModal";
 
 const ChatbotPage: React.FC = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const ChatbotPage: React.FC = () => {
         <button onClick={goToBack}>back</button>
         <TitleBar title="Chatting" />
       </S.Header>
-      <SecondaryButton onClick={goToBack} disabled={false} children="도움말" />
+      <HelpModal />
       <S.ChatMsgContainer>
         {Array(10).fill(<div>message</div>)}
       </S.ChatMsgContainer>
