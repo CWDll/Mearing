@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const MainContainer = styled.div`
   display: flex;
@@ -24,4 +24,4 @@ export const ButtonContainer = styled.div`
   justify-content: space-around;
   border: 1px solid red;
   width: 80%;
-  `
+`;

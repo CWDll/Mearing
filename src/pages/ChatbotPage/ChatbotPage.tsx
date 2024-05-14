@@ -13,15 +13,16 @@ const ChatbotPage: React.FC = () => {
     navigate("/");
   };
 
-
-
   return (
     <S.ChatbotContainer>
       <S.Header>
         <button onClick={goToBack}>back</button>
-        <TitleBar title="Chatting"/>
+        <TitleBar title="Chatting" />
       </S.Header>
-      <SecondaryButton onClick={goToBack} disabled={false} children="도움말"/>
+      <SecondaryButton onClick={goToBack} disabled={false} children="도움말" />
+      <S.ChatMsgContainer>
+        {Array(10).fill(<div>message</div>)}
+      </S.ChatMsgContainer>
     </S.ChatbotContainer>
   );
 };
