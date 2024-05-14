@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 // 컴포넌트 가져오기
 import TitleBar from "../../components/TitleBar";
-import Button from "../../components/Button";
+import { PrimaryButton } from "../../components/Button";
 import ContentBox from "../../components/ContentBox";
 
 const MainPage: React.FC = () => {
@@ -66,8 +66,8 @@ const MainPage: React.FC = () => {
         ))}
       </S.SavedChatContainer>
       <S.ButtonContainer>
-        <Button onClick={goToChatbotPage} disabled={false} children="Chat"/>
-        <Button onClick={goToCenterPage} disabled={false} children="Center"/>
+        <PrimaryButton onClick={goToChatbotPage} disabled={false} children="Chat"/>
+        <PrimaryButton onClick={goToCenterPage} disabled={false} children="Center"/>
       </S.ButtonContainer>
     </S.MainContainer>
   );
