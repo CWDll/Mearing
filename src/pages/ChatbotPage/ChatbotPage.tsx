@@ -2,6 +2,9 @@ import React from "react";
 import * as S from "./style";
 import { useNavigate } from "react-router-dom";
 
+// reacticons
+import { SlArrowLeft } from "react-icons/sl";
+
 // 컴포넌트 가져오기
 import TitleBar from "../../components/common/TitleBar";
 import { SecondaryButton } from "../../components/common/Button";
@@ -18,7 +21,9 @@ const ChatbotPage: React.FC = () => {
   return (
     <S.ChatbotContainer>
       <S.Header>
-        <button onClick={goToBack}>back</button>
+        <button onClick={goToBack}>
+          <SlArrowLeft />
+        </button>
         <TitleBar title="Chatting" />
       </S.Header>
       <HelpModal />

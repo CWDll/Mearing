@@ -2,6 +2,9 @@ import React from "react";
 import * as S from "./style";
 import { useNavigate } from "react-router-dom";
 
+// reacticons
+import { SlArrowLeft } from "react-icons/sl";
+
 // 컴포넌트 가져오기
 import TitleBar from "../../components/common/TitleBar";
 import ContentBox from "../../components/ContentBox";
@@ -77,7 +80,9 @@ const CenterPage: React.FC = () => {
   return (
     <S.CenterContainer>
       <S.Header>
-        <button onClick={goToBack}>back</button>
+        <button onClick={goToBack}>
+          <SlArrowLeft />
+        </button>
         <TitleBar title="도움 시설" />
       </S.Header>
       {/* <TitleBar title="위치 정보"/> */}
