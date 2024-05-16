@@ -24,6 +24,8 @@ export const ChatMsgContainer = styled.div`
   width: 80%;
   height: 25em;
   border: 1px solid black;
+  padding-top: 0.5em;
+  overflow-y: scroll;
 `;
 
 export const UsetActionContainer = styled.div`

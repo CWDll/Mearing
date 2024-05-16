@@ -23,8 +23,20 @@ const ChatbotPage: React.FC = () => {
       </S.Header>
       <HelpModal />
       <S.ChatMsgContainer>
-        <ChatbotMsgBox writer="person" date="2021-09-01" content="안녕하세요" />
-        <ChatbotMsgBox writer="gpt" date="2021-09-01" content="반갑습니다" />
+        {Array.from({ length: 5 }).map((_, index) => (
+          <React.Fragment key={index}>
+            <ChatbotMsgBox
+              writer="person"
+              date="2021-09-01"
+              content="안녕하세요"
+            />
+            <ChatbotMsgBox
+              writer="gpt"
+              date="2021-09-01"
+              content="반갑습니다"
+            />
+          </React.Fragment>
+        ))}
       </S.ChatMsgContainer>
       <S.UsetActionContainer>
         <S.MsgInput type="text" />
