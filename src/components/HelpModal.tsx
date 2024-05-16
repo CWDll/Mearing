@@ -4,6 +4,17 @@ import styled from "styled-components";
 // 컴포넌트 가져오기
 import { SecondaryButton } from "./Button";
 
+const HelpButtonSectionWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  height: 10%;
+  // border: 1px solid red;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 3em;
+  margin: -20% 0 -20% 0;
+`;
+
 const HelpModalWrapper = styled.div`
   position: fixed;
   z-index: 10;
@@ -60,7 +71,7 @@ const HelpModal: React.FC = () => {
   };
 
   return (
-    <div>
+    <HelpButtonSectionWrapper>
       <SecondaryButton
         onClick={handleButtonClick}
         disabled={disable}
@@ -98,7 +109,7 @@ const HelpModal: React.FC = () => {
           <ModalCloseButton onClick={handleCloseModal}>닫기</ModalCloseButton>
         </HelpModalWrapper>
       )}
-    </div>
+    </HelpButtonSectionWrapper>
   );
 };
 
