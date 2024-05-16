@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import TitleBar from "../../components/common/TitleBar";
 import { SecondaryButton } from "../../components/common/Button";
 import HelpModal from "../../components/HelpModal";
+import ChatbotMsgBox from "../../components/ChatbotMsgBox";
 
 const ChatbotPage: React.FC = () => {
   const navigate = useNavigate();
@@ -22,7 +23,8 @@ const ChatbotPage: React.FC = () => {
       </S.Header>
       <HelpModal />
       <S.ChatMsgContainer>
-        {Array(10).fill(<div>message</div>)}
+        <ChatbotMsgBox writer="person" date="2021-09-01" content="안녕하세요" />
+        <ChatbotMsgBox writer="gpt" date="2021-09-01" content="반갑습니다" />
       </S.ChatMsgContainer>
       <S.UsetActionContainer>
         <S.MsgInput type="text" />
