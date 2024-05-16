@@ -3,8 +3,8 @@ import * as S from "./style";
 import { useNavigate } from "react-router-dom";
 
 // 컴포넌트 가져오기
-import TitleBar from "../../components/TitleBar";
-import { PrimaryButton } from "../../components/Button";
+import TitleBar from "../../components/common/TitleBar";
+import { PrimaryButton } from "../../components/common/Button";
 import ContentBox from "../../components/ContentBox";
 
 const MainPage: React.FC = () => {

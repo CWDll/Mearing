@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 // 컴포넌트 가져오기
-import { SecondaryButton } from "./Button";
+import { SecondaryButton } from "./common/Button";
 
 const HelpButtonSectionWrapper = styled.div`
   display: flex;

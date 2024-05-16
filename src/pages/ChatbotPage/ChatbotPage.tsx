@@ -3,8 +3,8 @@ import * as S from "./style";
 import { useNavigate } from "react-router-dom";
 
 // 컴포넌트 가져오기
-import TitleBar from "../../components/TitleBar";
-import { SecondaryButton } from "../../components/Button";
+import TitleBar from "../../components/common/TitleBar";
+import { SecondaryButton } from "../../components/common/Button";
 import HelpModal from "../../components/HelpModal";
 
 const ChatbotPage: React.FC = () => {
