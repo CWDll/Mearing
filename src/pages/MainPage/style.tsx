@@ -12,10 +12,11 @@ export const SavedChatContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+  min-width: 80%;
   height: 25em;
   border: 1px solid black;
   overflow-y: auto;
+  padding-top: 1em;
 `;
 
 export const ButtonContainer = styled.div`

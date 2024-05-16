@@ -16,6 +16,7 @@ type ContentBoxProps = DateContentProps | ContactInfoProps;
 
 // 스타일을 조건부로 적용하는 함수
 const contentBoxStyle = css<{ type: "date" | "contact" }>`
+  width: 80%;
   padding: 20px;
   margin-bottom: 10px;
   border: 1px solid ${({ type }) => (type === "date" ? "#4CAF50" : "#2196F3")};
