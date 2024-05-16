@@ -16,7 +16,6 @@ const HelpModalWrapper = styled.div`
   align-items: center;
   width: 85vw;
   height: 70vh;
-  border: 1px solid black;
   background-color: rgba(0, 107, 179, 0.9);
   border-radius: 1em;
 `;
@@ -27,6 +26,7 @@ const HelpModalBody = styled.div`
   background-color: white;
   border-radius: 0.5em;
   padding: 12px;
+  overflow-y: scroll;
 `;
 
 const ModalCloseButton = styled.button`
@@ -35,6 +35,7 @@ const ModalCloseButton = styled.button`
   border-radius: 5px;
   border: 1px solid white;
   background-color: white;
+  font-size: 1em;
 `;
 
 const ModalTitleText = styled.h1`
@@ -68,7 +69,32 @@ const HelpModal: React.FC = () => {
       {isOpen && (
         <HelpModalWrapper>
           <ModalTitleText>도움말</ModalTitleText>
-          <HelpModalBody>Body Text</HelpModalBody>
+          <HelpModalBody>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget
+            lorem ac lectus consequat tincidunt. Curabitur luctus turpis sed
+            tortor convallis, eget placerat sapien rutrum. Integer quis libero
+            eget nisi congue finibus at vitae velit. Vestibulum ante ipsum
+            primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+            Fusce et nisi sed libero fermentum finibus sed et odio. Sed
+            efficitur odio vel nulla tincidunt, vitae posuere lorem gravida.
+            Nulla facilisi. Nulla facilisi. Phasellus nec felis vitae lorem
+            blandit varius. In hac habitasse platea dictumst. Vivamus semper
+            risus vitae justo congue, ut tempor neque dapibus. Sed ut felis ut
+            dui accumsan bibendum. Morbi vel tellus justo. Cras lobortis
+            vehicula nisi, non pharetra nulla viverra eget. Proin euismod, orci
+            eget feugiat blandit, lorem lacus elementum quam, vel sagittis eros
+            enim nec ex. Quisque id quam pretium, venenatis est ac, tristique
+            nibh. Nunc nec congue quam, vel commodo purus. Vivamus at nisl vel
+            libero viverra interdum. Duis ut elit vehicula, eleifend dolor id,
+            fermentum lectus. In ultrices lorem vel tortor placerat, sit amet
+            consequat velit varius. Phasellus feugiat, magna nec faucibus
+            commodo, felis enim lacinia lorem, ut vehicula justo lectus vitae
+            elit. Nunc id orci sit amet justo bibendum facilisis. Integer eget
+            mauris et velit convallis ultrices. Sed pharetra, nunc non rhoncus
+            convallis, nisl elit pulvinar libero, sed dignissim mauris leo nec
+            libero. Nulla facilisi. Phasellus non felis non magna fermentum
+            dictum.
+          </HelpModalBody>
           <ModalCloseButton onClick={handleCloseModal}>닫기</ModalCloseButton>
         </HelpModalWrapper>
       )}
