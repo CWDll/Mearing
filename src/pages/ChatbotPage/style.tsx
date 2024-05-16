@@ -22,10 +22,10 @@ export const ChatMsgContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 80%;
-  height: 25em;
+  height: 27em;
   border: 1px solid black;
-  padding-top: 0.5em;
   overflow-y: scroll;
+  padding: 0.5em 0.3em 0.5em 0.3em;
 `;
 
 export const UsetActionContainer = styled.div`
