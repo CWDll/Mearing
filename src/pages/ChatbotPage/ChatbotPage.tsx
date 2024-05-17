@@ -4,9 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 // reacticons
 import { SlArrowLeft } from "react-icons/sl";
+import { FiMessageSquare } from "react-icons/fi";
 
 // 컴포넌트 가져오기
 import TitleBar from "../../components/common/TitleBar";
+import TitleBarButton from "../../components/common/TitleBarButton";
 import { SecondaryButton } from "../../components/common/Button";
 import HelpModal from "../../components/HelpModal";
 import ChatbotMsgBox from "../../components/ChatbotMsgBox";
@@ -21,10 +23,9 @@ const ChatbotPage: React.FC = () => {
   return (
     <S.ChatbotContainer>
       <S.Header>
-        <button onClick={goToBack}>
-          <SlArrowLeft />
-        </button>
-        <TitleBar title="Chatting" />
+        <TitleBarButton onClick={goToBack} />
+        <FiMessageSquare size={"35px"} />
+        <TitleBar title="이야기 하기" />
       </S.Header>
       <HelpModal />
       <S.ChatMsgContainer>

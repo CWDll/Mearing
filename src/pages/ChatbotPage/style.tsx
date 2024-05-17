@@ -13,7 +13,7 @@ export const Header = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  height: 5em;
+  height: 3em;
   border: 1px solid black;
 `;
 

@@ -4,8 +4,7 @@ import styled from "styled-components";
 const TitleContainer = styled.div`
   width: 80%;
   margin: 0 auto;
-  padding: 10px;
-  background-color: #f0f0f0;
+  padding: 5px;
 `;
 
 const TitleText = styled.h1`

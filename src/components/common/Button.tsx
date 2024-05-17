@@ -5,8 +5,8 @@ const ButtonWrapper = styled.button`
   width: 10em;
   height: 4em;
   border-radius: 5px;
-  border: 1px solid black;
-  background-color: green;
+  border: none;
+  background-color: darkgray;
 `;
 
 type ButtonProps = {
@@ -28,6 +28,10 @@ export default Button;
 // 버튼 스타일링
 const PrimaryButton = styled(ButtonWrapper)`
   /* Primary 버튼 스타일을 여기에 작성하세요 */
+  font-weight: bold;
+  padding: 0;
+  font-size: 15px;
+  color: white;
 `;
 
 const SecondaryButton = styled(ButtonWrapper)`
