@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./style";
 import { useNavigate } from "react-router-dom";
 
@@ -14,10 +14,18 @@ import HelpModal from "../../components/HelpModal";
 import ChatbotMsgBox from "../../components/ChatbotMsgBox";
 
 const ChatbotPage: React.FC = () => {
+  const [chatMsg, setChatMsg] = useState<string>("");
   const navigate = useNavigate();
+
   // 뒤로가기 버튼 클릭 이벤트
   const goToBack = (): void => {
     navigate("/");
+  };
+
+  const handleInputMsgChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newMsg = event.target.value;
+    setChatMsg(newMsg);
+    console.log("currentMessage:", newMsg);
   };
 
   return (
@@ -45,7 +53,13 @@ const ChatbotPage: React.FC = () => {
         ))}
       </S.ChatMsgContainer>
       <S.UsetActionContainer>
-        <S.MsgInput type="text" />
+        <S.MsgInput
+          type="text"
+          placeholder="여기 입력해주세요"
+          required
+          value={chatMsg}
+          onChange={handleInputMsgChange}
+        />
         <S.MsgSendButton>전송</S.MsgSendButton>
         <S.STTButton>STT버튼</S.STTButton>
       </S.UsetActionContainer>

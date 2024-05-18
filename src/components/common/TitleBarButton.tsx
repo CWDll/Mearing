@@ -12,6 +12,7 @@ const BarButton = styled.button`
   cursor: pointer;
   font-size: 1.5rem;
   color: #333;
+  margin-right: 25%;
 `;
 
 const TitleBarButton: React.FC<TitleBarButtonProps> = ({ onClick }) => {
