@@ -75,9 +75,11 @@ const MainPage: React.FC = () => {
       <p>"시설 보기"버튼을 눌러주세요.</p>
       {/* map 함수를 사용하여 더미데이터(저장한 채팅 내역)을 넣을 예정 */}
       <S.SavedChatContainer>
+        {/* <S.ContentWrapper> */}
         {dummyData.map((item, index) => (
           <ContentBox key={index} date={item.date} content={item.content} />
         ))}
+        {/* </S.ContentWrapper> */}
       </S.SavedChatContainer>
       <S.ButtonContainer>
         <PrimaryButton

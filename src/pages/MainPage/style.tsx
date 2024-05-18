@@ -17,6 +17,7 @@ export const SavedChatContainer = styled.div`
   border: 1px solid black;
   overflow-y: auto;
   padding-top: 1em;
+  border-radius: 10px;
 `;
 
 export const ButtonContainer = styled.div`
@@ -24,4 +25,8 @@ export const ButtonContainer = styled.div`
   flex-direction: row;
   justify-content: space-around;
   width: 80%;
+`;
+
+export const ContentWrapper = styled.div`
+  padding: 10px;
 `;

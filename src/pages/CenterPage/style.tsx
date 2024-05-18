@@ -26,4 +26,5 @@ export const CenterBodyContainer = styled.div`
   height: 25em;
   border: 1px solid black;
   overflow-y: auto;
+  padding-top: 10px;
 `;
