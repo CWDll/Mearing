@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 // reacticons
 import { SlArrowLeft } from "react-icons/sl";
 import { FiMessageSquare } from "react-icons/fi";
+import { RiSpeakFill } from "react-icons/ri";
 
 // 컴포넌트 가져오기
 import TitleBar from "../../components/common/TitleBar";
@@ -22,14 +23,21 @@ const ChatbotPage: React.FC = () => {
     navigate("/");
   };
 
+  // input창 메시지 변경 이벤트
   const handleInputMsgChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newMsg = event.target.value;
     setChatMsg(newMsg);
     console.log("currentMessage:", newMsg);
   };
 
+  // 전손 버튼 클릭 이벤트
   const sendButtonClicked = () => {
     alert("현재까지 입력된 메세지입니다:" + chatMsg);
+  };
+
+  // STT 버튼 클릭 이벤트
+  const sttButtonClicked = () => {
+    alert("음성인식 기능을 실행합니다.");
   };
 
   return (
@@ -66,7 +74,9 @@ const ChatbotPage: React.FC = () => {
           onChange={handleInputMsgChange}
         />
         <S.MsgSendButton onClick={sendButtonClicked}>전송</S.MsgSendButton>
-        <S.STTButton>STT버튼</S.STTButton>
+        <S.STTButton onClick={sttButtonClicked}>
+          <RiSpeakFill size={"25px"} />
+        </S.STTButton>
       </S.UsetActionContainer>
     </S.ChatbotContainer>
   );

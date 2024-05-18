@@ -35,11 +35,10 @@ export const UsetActionContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 3em;
-  border: 1px solid red;
 `;
 
 export const MsgInput = styled.input`
-  flex: 4;
+  flex: 5;
 `;
 
 export const MsgSendButton = styled.button`

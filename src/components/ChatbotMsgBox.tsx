@@ -61,6 +61,16 @@ const ContentUserActionButtonConateinr = styled.div`
 `;
 
 const ChatbotMsgBox: React.FC<ChatbotMsgBoxProps> = (props) => {
+  // SAVE 버튼 클릭 이벤트
+  const saveButtonClicked = () => {
+    alert("현재 메세지를 저장합니다.");
+  };
+
+  // TTS 버튼 클릭 이벤트
+  const ttsButtonClicked = () => {
+    alert("현재 메세지를 음성으로 변환합니다.");
+  };
+
   return (
     <ContentLineContainer>
       <ContentBoxWrapper writer={props.writer}>
@@ -72,11 +82,11 @@ const ChatbotMsgBox: React.FC<ChatbotMsgBoxProps> = (props) => {
       {props.writer === "gpt" && (
         <ContentUserActionButtonConateinr>
           {/* TTS 버튼 */}
-          <button>
+          <button onClick={ttsButtonClicked}>
             <HiSpeakerWave size={"25px"} />
           </button>
           {/* SAVE 버튼 */}
-          <button>
+          <button onClick={saveButtonClicked}>
             <MdOutlineSaveAlt size={"25px"} />
           </button>
         </ContentUserActionButtonConateinr>
