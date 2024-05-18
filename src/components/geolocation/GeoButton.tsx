@@ -42,7 +42,7 @@ const GeoButton: React.FC = () => {
     });
   };
 
-  // 역지오코딩 함수(카카오 API 호출)
+  // 역지오코딩 함수(카카오 API 호출)를 통해서 동 단위까지의 주소를 가져옴
   const reverseGeocode = async (lat: string, lng: string) => {
     const apiKey = process.env.REACT_APP_KAKAO_API_KEY; // 환경 변수 사용
     const url = `https://dapi.kakao.com/v2/local/geo/coord2address.json?x=${lng}&y=${lat}&input_coord=WGS84`;
@@ -50,8 +50,12 @@ const GeoButton: React.FC = () => {
       const response = await axios.get(url, {
         headers: { Authorization: `KakaoAK ${apiKey}` },
       });
-      const address = response.data.documents[0].address.address_name;
-      setLocation((prevState) => ({ ...prevState, address }));
+      // 세부 주소까지 포함한 주소
+      const fullAddress = response.data.documents[0].address.address_name;
+      // '동' 단위까지의 주소 추출
+      const addressParts = fullAddress.split(" "); // 주소를 공백으로 분할
+      const trimmedAddress = addressParts.slice(0, 3).join(" "); // 첫 세 부분만 사용 (시/구/동)
+      setLocation((prevState) => ({ ...prevState, address: trimmedAddress }));
     } catch (error) {
       console.error("Error fetching address:", error);
       setLocation((prevState) => ({
