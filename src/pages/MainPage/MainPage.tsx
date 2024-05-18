@@ -70,6 +70,9 @@ const MainPage: React.FC = () => {
     <S.MainContainer>
       <TitleBar title="Mearing" date={dateInfo} />
       <p>저장된 이야기 목록입니다.</p>
+      <p>대화를 시작하려면 "대화하기"를,</p>
+      <p>주변 복지 시설의 정보를 원하시면</p>
+      <p>"시설 보기"버튼을 눌러주세요.</p>
       {/* map 함수를 사용하여 더미데이터(저장한 채팅 내역)을 넣을 예정 */}
       <S.SavedChatContainer>
         {dummyData.map((item, index) => (
