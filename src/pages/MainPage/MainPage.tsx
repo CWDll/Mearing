@@ -83,12 +83,12 @@ const MainPage: React.FC = () => {
         <PrimaryButton
           onClick={goToChatbotPage}
           disabled={false}
-          children="Chat"
+          children="대화하기"
         />
         <PrimaryButton
           onClick={goToCenterPage}
           disabled={false}
-          children="Center"
+          children="시설 보기"
         />
       </S.ButtonContainer>
     </S.MainContainer>
