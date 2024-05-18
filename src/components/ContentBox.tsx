@@ -52,8 +52,13 @@ const ContentBox: React.FC<ContentBoxProps> = (props) => {
       {isContactInfoProps(props) && (
         <>
           <div>Name: {props.name}</div>
-          <div>URL: {props.url}</div>
-          <div>Phone Number: {props.phoneNumber}</div>
+          <a href={props.url} target="_blank" rel="noopener noreferrer">
+            사이트 방문하기
+          </a>
+          <br />
+          <a href={`tel:${props.phoneNumber}`}>
+            {props.phoneNumber} 로 전화 걸기
+          </a>
         </>
       )}
     </ContentBoxWrapper>
