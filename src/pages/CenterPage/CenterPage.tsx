@@ -97,7 +97,6 @@ const CenterPage: React.FC = () => {
             phoneNumber={item.phoneNumber}
           />
         ))}
-        <a href="tel:010-4640-4656">전화 걸기</a>
       </S.CenterBodyContainer>
     </S.CenterContainer>
   );
