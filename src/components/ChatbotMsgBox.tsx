@@ -1,6 +1,10 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
+// reacticons 사용
+import { HiSpeakerWave } from "react-icons/hi2";
+import { MdOutlineSaveAlt } from "react-icons/md";
+
 // 메시지 박스 타입 정의
 interface ChatbotMsgBox {
   writer: string;
@@ -28,7 +32,8 @@ const ContentBoxWrapper = styled.div<{ writer: "person" | "gpt" | any }>`
   display: flex;
   flex-direction: column;
   ${messageBoxStyle}
-  width: 50%;
+  min-width: 70%;
+  max-width: 100%;
   height: auto;
   padding: 0.5em;
   margin-bottom: 0.5em;
@@ -46,6 +51,15 @@ const ContentLineContainer = styled.div`
   // height: 5em;
 `;
 
+const ContentUserActionButtonConateinr = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  width: auto;
+  justify-content: space-around;
+  margin-left: 1vw;
+`;
+
 const ChatbotMsgBox: React.FC<ChatbotMsgBoxProps> = (props) => {
   return (
     <ContentLineContainer>
@@ -54,11 +68,18 @@ const ChatbotMsgBox: React.FC<ChatbotMsgBoxProps> = (props) => {
         <div>Date: {props.date}</div>
         <div>Content: {props.content}</div>
       </ContentBoxWrapper>
+      {/* 채팅 전송자가 gpt일 때만 TTS, SAVE버튼을 렌더링한다. */}
       {props.writer === "gpt" && (
-        <div>
-          <div>STT</div>
-          <div>SAVE</div>
-        </div>
+        <ContentUserActionButtonConateinr>
+          {/* TTS 버튼 */}
+          <button>
+            <HiSpeakerWave size={"25px"} />
+          </button>
+          {/* SAVE 버튼 */}
+          <button>
+            <MdOutlineSaveAlt size={"25px"} />
+          </button>
+        </ContentUserActionButtonConateinr>
       )}
     </ContentLineContainer>
   );

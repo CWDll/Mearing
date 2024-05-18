@@ -46,13 +46,14 @@ const ChatbotPage: React.FC = () => {
             <ChatbotMsgBox
               writer="person"
               date="2021-09-01"
-              content="안녕하세요"
+              content="안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요"
             />
             <ChatbotMsgBox
               writer="gpt"
               date="2021-09-01"
-              content="반갑습니다"
+              content="반갑습니다반갑습니다반갑습니다반갑습니다반갑습니다반갑습니다반갑습니다반갑습니다반갑습니다반갑습니다반갑습니다반갑습니다"
             />
+            <hr />
           </React.Fragment>
         ))}
       </S.ChatMsgContainer>
