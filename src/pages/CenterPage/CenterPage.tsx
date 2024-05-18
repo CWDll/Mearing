@@ -4,11 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 // reacticons
 import { SlArrowLeft } from "react-icons/sl";
+import { FaBuildingCircleCheck } from "react-icons/fa6";
 
 // 컴포넌트 가져오기
 import TitleBar from "../../components/common/TitleBar";
 import ContentBox from "../../components/ContentBox";
-import GeoButton from "../../components/GeoButton";
+import GeoButton from "../../components/geolocation/GeoButton";
+import TitleBarButton from "../../components/common/TitleBarButton";
 
 const CenterPage: React.FC = () => {
   const navigate = useNavigate();
@@ -80,9 +82,8 @@ const CenterPage: React.FC = () => {
   return (
     <S.CenterContainer>
       <S.Header>
-        <button onClick={goToBack}>
-          <SlArrowLeft />
-        </button>
+        <TitleBarButton onClick={goToBack} />
+        <FaBuildingCircleCheck size={"35px"} />
         <TitleBar title="도움 시설" />
       </S.Header>
       {/* <TitleBar title="위치 정보"/> */}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import * as S from "./style";
 
 interface LocationState {
   loaded: boolean;
@@ -71,7 +72,7 @@ const GeoButton: React.FC = () => {
   };
 
   return (
-    <div>
+    <S.GeoLocationContainer>
       <button onClick={getLocation}>Get Location</button>
       <div>
         {location.loaded ? (
@@ -90,7 +91,7 @@ const GeoButton: React.FC = () => {
           <p>[Loading...]Location data not loaded yet.</p>
         )}
       </div>
-    </div>
+    </S.GeoLocationContainer>
   );
 };
 
