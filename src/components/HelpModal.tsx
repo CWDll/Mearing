@@ -81,30 +81,23 @@ const HelpModal: React.FC = () => {
         <HelpModalWrapper>
           <ModalTitleText>도움말</ModalTitleText>
           <HelpModalBody>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget
-            lorem ac lectus consequat tincidunt. Curabitur luctus turpis sed
-            tortor convallis, eget placerat sapien rutrum. Integer quis libero
-            eget nisi congue finibus at vitae velit. Vestibulum ante ipsum
-            primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-            Fusce et nisi sed libero fermentum finibus sed et odio. Sed
-            efficitur odio vel nulla tincidunt, vitae posuere lorem gravida.
-            Nulla facilisi. Nulla facilisi. Phasellus nec felis vitae lorem
-            blandit varius. In hac habitasse platea dictumst. Vivamus semper
-            risus vitae justo congue, ut tempor neque dapibus. Sed ut felis ut
-            dui accumsan bibendum. Morbi vel tellus justo. Cras lobortis
-            vehicula nisi, non pharetra nulla viverra eget. Proin euismod, orci
-            eget feugiat blandit, lorem lacus elementum quam, vel sagittis eros
-            enim nec ex. Quisque id quam pretium, venenatis est ac, tristique
-            nibh. Nunc nec congue quam, vel commodo purus. Vivamus at nisl vel
-            libero viverra interdum. Duis ut elit vehicula, eleifend dolor id,
-            fermentum lectus. In ultrices lorem vel tortor placerat, sit amet
-            consequat velit varius. Phasellus feugiat, magna nec faucibus
-            commodo, felis enim lacinia lorem, ut vehicula justo lectus vitae
-            elit. Nunc id orci sit amet justo bibendum facilisis. Integer eget
-            mauris et velit convallis ultrices. Sed pharetra, nunc non rhoncus
-            convallis, nisl elit pulvinar libero, sed dignissim mauris leo nec
-            libero. Nulla facilisi. Phasellus non felis non magna fermentum
-            dictum.
+            여러분이 사용하고 계신 Mearing에 대한 도움말입니다.
+            <br />
+            <br />
+            1. 첫 화면에는 여러분이 대화 중 저장한 내용이 표시됩니다.
+            <br />
+            <br />
+            2. 대화는 인공지능 AI와 이루어지며, 악의적으로 도용되지 않습니다.{" "}
+            <br />
+            <br />
+            3. AI의 답변 오른쪽에 있는 버튼을 통해서 소리로 메세지를 들을 수
+            있고, 저장할 수도 있습니다. <br />
+            <br />
+            4. 입력창 오른쪽에 있는 버튼을 누르면 여러분의 목소리를 인식하여
+            글자로 바꾸어줍니다. <br />
+            <br />
+            5. 첫 화면에서 "시설 보기" 버튼을 누르면 주변 복지 시설의 정보를
+            확인할 수 있습니다.
           </HelpModalBody>
           <ModalCloseButton onClick={handleCloseModal}>닫기</ModalCloseButton>
         </HelpModalWrapper>
