@@ -73,22 +73,25 @@ const GeoButton: React.FC = () => {
 
   return (
     <S.GeoLocationContainer>
-      <button onClick={getLocation}>Get Location</button>
+      <S.GeoButton onClick={getLocation}>위치 정보 가져오기</S.GeoButton>
       <div>
         {location.loaded ? (
           location.error ? (
-            <p>Error: {location.error}</p>
+            <p>문제 발생: {location.error}</p>
           ) : (
             <>
               <p>
-                Latitude: {location.coordinates.lat}, Longitude:{" "}
+                위도: {location.coordinates.lat}, 경도:{" "}
                 {location.coordinates.lng}
               </p>
-              <p>Address: {location.address || "Address not loaded"}</p>
+              <S.UserLocation>
+                현재 위치:{" "}
+                {location.address || "위치 정보가 확인되지 않았습니다."}
+              </S.UserLocation>
             </>
           )
         ) : (
-          <p>[Loading...]Location data not loaded yet.</p>
+          <p>위 버튼을 눌러 위치 정보를 불러와 주세요 !</p>
         )}
       </div>
     </S.GeoLocationContainer>
