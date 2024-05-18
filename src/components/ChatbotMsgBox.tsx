@@ -29,20 +29,38 @@ const ContentBoxWrapper = styled.div<{ writer: "person" | "gpt" | any }>`
   flex-direction: column;
   ${messageBoxStyle}
   width: 50%;
-  height: 100%;
-  padding: 20px;
+  height: auto;
+  padding: 0.5em;
   margin-bottom: 0.5em;
   border-radius: 0.5em;
   padding: auto;
 `;
 
+// 채팅 메세지 라인 컨테이너
+const ContentLineContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  // height: 5em;
+`;
+
 const ChatbotMsgBox: React.FC<ChatbotMsgBoxProps> = (props) => {
   return (
-    <ContentBoxWrapper writer={props.writer}>
-      <div>Writer: {props.writer}</div>
-      <div>Date: {props.date}</div>
-      <div>Content: {props.content}</div>
-    </ContentBoxWrapper>
+    <ContentLineContainer>
+      <ContentBoxWrapper writer={props.writer}>
+        <div>Writer: {props.writer}</div>
+        <div>Date: {props.date}</div>
+        <div>Content: {props.content}</div>
+      </ContentBoxWrapper>
+      {props.writer === "gpt" && (
+        <div>
+          <div>STT</div>
+          <div>SAVE</div>
+        </div>
+      )}
+    </ContentLineContainer>
   );
 };
 
