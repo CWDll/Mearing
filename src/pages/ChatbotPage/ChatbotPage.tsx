@@ -28,6 +28,10 @@ const ChatbotPage: React.FC = () => {
     console.log("currentMessage:", newMsg);
   };
 
+  const sendButtonClicked = () => {
+    alert("현재까지 입력된 메세지입니다:" + chatMsg);
+  };
+
   return (
     <S.ChatbotContainer>
       <S.Header>
@@ -60,7 +64,7 @@ const ChatbotPage: React.FC = () => {
           value={chatMsg}
           onChange={handleInputMsgChange}
         />
-        <S.MsgSendButton>전송</S.MsgSendButton>
+        <S.MsgSendButton onClick={sendButtonClicked}>전송</S.MsgSendButton>
         <S.STTButton>STT버튼</S.STTButton>
       </S.UsetActionContainer>
     </S.ChatbotContainer>
