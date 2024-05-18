@@ -6,12 +6,10 @@ import { SecondaryButton } from "./common/Button";
 
 const HelpButtonSectionWrapper = styled.div`
   display: flex;
-  width: 100%;
+  width: 85%;
   height: 10%;
-  // border: 1px solid red;
   align-items: center;
   justify-content: flex-end;
-  padding-right: 3em;
   margin: -20% 0 -20% 0;
 `;
 
