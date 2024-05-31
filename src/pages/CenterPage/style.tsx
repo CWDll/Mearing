@@ -8,7 +8,7 @@ export const CenterContainer = styled.div`
   justify-content: space-around;
 `;
 
-export const Header = styled.div`
+export const Header = styled.header`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
