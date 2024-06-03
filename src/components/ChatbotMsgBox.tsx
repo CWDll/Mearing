@@ -6,14 +6,14 @@ import { HiSpeakerWave } from "react-icons/hi2";
 import { MdOutlineSaveAlt } from "react-icons/md";
 
 // 메시지 박스 타입 정의
-interface ChatbotMsgBox {
+interface ChatbotMsgBoxType {
   writer: string;
   date: string;
   content: string;
 }
 
 // 속성 중 writer의 값 지정
-interface ChatbotMsgBoxProps extends ChatbotMsgBox {
+interface ChatbotMsgBoxProps extends ChatbotMsgBoxType {
   writer: "person" | "gpt";
 }
 
