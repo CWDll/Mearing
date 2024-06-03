@@ -50,6 +50,7 @@ const GeoButton: React.FC<GeoButtonProps> = ({ setContacts }) => {
       });
       const address = response.data.documents[0].address.address_name;
       const [city, district] = address.split(" ");
+      console.log("city와 district정보:", city, district);
 
       setLocation((prevState) => ({
         ...prevState,
