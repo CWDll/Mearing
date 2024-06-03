@@ -37,7 +37,7 @@ const CenterPage: React.FC = () => {
         <TitleBar title="도움 시설" />
       </S.Header>
       {/* <TitleBar title="위치 정보"/> */}
-      <GeoButton />
+      <GeoButton setContacts={setContacts} />
       <S.CenterBodyContainer>
         {contacts.map((item, index) => (
           <ContentBox
