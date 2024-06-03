@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./style";
 import { useNavigate } from "react-router-dom";
 
@@ -10,74 +10,24 @@ import { FaBuildingCircleCheck } from "react-icons/fa6";
 import TitleBar from "../../components/common/TitleBar";
 import ContentBox from "../../components/ContentBox";
 import GeoButton from "../../components/geolocation/GeoButton";
+
 import TitleBarButton from "../../components/common/TitleBarButton";
+
+// 수행기관 정보를 가져오기 위한 데이터 타입 정의
+interface ContactData {
+  수행기관명: string;
+  주소: string;
+  "기관 대표전화": string;
+}
 
 const CenterPage: React.FC = () => {
   const navigate = useNavigate();
+  const [contacts, setContacts] = useState<ContactData[]>([]);
+
   // 뒤로가기 버튼 클릭 이벤트
   const goToBack = (): void => {
     navigate("/");
   };
-
-  // 더미데이터 사용하기
-  interface ContactData {
-    type: "contact";
-    name: string;
-    url: string;
-    phoneNumber: string;
-  }
-
-  // Contact 타입 더미 데이터만 생성
-  const dummyData: ContactData[] = [
-    {
-      type: "contact",
-      name: "홍길동",
-      url: "https://www.example.com",
-      phoneNumber: "010-1234-5678",
-    },
-    {
-      type: "contact",
-      name: "이순신",
-      url: "https://www.anotherexample.com",
-      phoneNumber: "010-8765-4321",
-    },
-    {
-      type: "contact",
-      name: "장보고",
-      url: "https://www.history.com",
-      phoneNumber: "010-9876-5432",
-    },
-    {
-      type: "contact",
-      name: "유성룡",
-      url: "https://www.science.org",
-      phoneNumber: "010-5678-1234",
-    },
-    {
-      type: "contact",
-      name: "김유신",
-      url: "https://www.military.kr",
-      phoneNumber: "010-4321-8765",
-    },
-    {
-      type: "contact",
-      name: "강감찬",
-      url: "https://www.leadership.com",
-      phoneNumber: "010-5678-9101",
-    },
-    {
-      type: "contact",
-      name: "조조",
-      url: "https://www.strategist.cn",
-      phoneNumber: "010-2345-6789",
-    },
-    {
-      type: "contact",
-      name: "제갈량",
-      url: "https://www.wisdom.net",
-      phoneNumber: "010-8765-4321",
-    },
-  ];
 
   return (
     <S.CenterContainer>
@@ -89,12 +39,12 @@ const CenterPage: React.FC = () => {
       {/* <TitleBar title="위치 정보"/> */}
       <GeoButton />
       <S.CenterBodyContainer>
-        {dummyData.map((item, index) => (
+        {contacts.map((item, index) => (
           <ContentBox
             key={index}
-            name={item.name}
-            url={item.url}
-            phoneNumber={item.phoneNumber}
+            name={item["수행기관명"]}
+            url={item["주소"]}
+            phoneNumber={item["기관 대표전화"]}
           />
         ))}
       </S.CenterBodyContainer>
