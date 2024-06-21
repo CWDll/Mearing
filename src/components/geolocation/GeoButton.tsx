@@ -12,7 +12,17 @@ interface LocationState {
   address: string | null;
 }
 
-const GeoButton: React.FC = () => {
+interface ContactData {
+  '수행기관명': string;
+  '주소': string;
+  '기관 대표전화': string;
+}
+
+interface GeoButtonProps {
+  setContacts: (contacts: ContactData[]) => void;
+}
+
+const GeoButton: React.FC<GeoButtonProps> = ({ setContacts }) => {
   const [location, setLocation] = useState<LocationState>({
     loaded: false,
     coordinates: { lat: "0", lng: "0" },
@@ -20,9 +30,10 @@ const GeoButton: React.FC = () => {
     address: null,
   });
 
-  const handleLocation = (position: GeolocationPosition) => {
-    const lat = position.coords.latitude.toString();
-    const lng = position.coords.longitude.toString();
+  const handleLocation = async (position: GeolocationPosition) => {
+    const { latitude, longitude } = position.coords;
+    const lat = latitude.toString();
+    const lng = longitude.toString();
     setLocation({
       loaded: true,
       coordinates: { lat, lng },
@@ -30,48 +41,50 @@ const GeoButton: React.FC = () => {
       address: null,
     });
     // 카카오 역지오코딩 API 호출
-    reverseGeocode(lat, lng);
-  };
-
-  const handleError = (error: GeolocationPositionError) => {
-    setLocation({
-      loaded: true,
-      coordinates: { lat: "0", lng: "0" },
-      error: error.message,
-      address: null,
-    });
-  };
-
-  // 역지오코딩 함수(카카오 API 호출)를 통해서 동 단위까지의 주소를 가져옴
-  const reverseGeocode = async (lat: string, lng: string) => {
-    const apiKey = process.env.REACT_APP_KAKAO_API_KEY; // 환경 변수 사용
+    const apiKey = process.env.REACT_APP_KAKAO_API_KEY;
     const url = `https://dapi.kakao.com/v2/local/geo/coord2address.json?x=${lng}&y=${lat}&input_coord=WGS84`;
+
     try {
       const response = await axios.get(url, {
         headers: { Authorization: `KakaoAK ${apiKey}` },
       });
-      // 세부 주소까지 포함한 주소
-      const fullAddress = response.data.documents[0].address.address_name;
-      // '동' 단위까지의 주소 추출
-      const addressParts = fullAddress.split(" "); // 주소를 공백으로 분할
-      const trimmedAddress = addressParts.slice(0, 3).join(" "); // 첫 세 부분만 사용 (시/구/동)
-      setLocation((prevState) => ({ ...prevState, address: trimmedAddress }));
-    } catch (error) {
-      console.error("Error fetching address:", error);
+      const address = response.data.documents[0].address.address_name;
+      const [city, district] = address.split(' ');
+
       setLocation((prevState) => ({
         ...prevState,
-        error: "Failed to fetch address",
+        address: `${city} ${district}`
+      }));
+
+      // Flask API 호출
+      const contactData = await axios.get(`http://localhost:5000/api/contacts?city=${city}&district=${district}`);
+      setContacts(contactData.data);
+    } catch (error) {
+      console.error("Error fetching address or contacts:", error);
+      setLocation((prevState) => ({
+        ...prevState,
+        error: "Failed to fetch data"
       }));
     }
   };
 
   const getLocation = () => {
-    if (!navigator.geolocation) {
-      handleError({
-        message: "Geolocation is not supported by your browser",
-      } as GeolocationPositionError);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(handleLocation, (error) => {
+        setLocation({
+          loaded: true,
+          coordinates: { lat: "0", lng: "0" },
+          error: error.message,
+          address: null,
+        });
+      });
     } else {
-      navigator.geolocation.getCurrentPosition(handleLocation, handleError);
+      setLocation({
+        loaded: true,
+        coordinates: { lat: "0", lng: "0" },
+        error: "Geolocation is not supported by your browser",
+        address: null,
+      });
     }
   };
 
@@ -84,22 +97,11 @@ const GeoButton: React.FC = () => {
             <p>문제 발생: {location.error}</p>
           ) : (
             <>
-              <p>
-                위도: {location.coordinates.lat}, 경도:{" "}
-                {location.coordinates.lng}
-              </p>
-              <S.UserLocation>
-                현재 위치:{" "}
-                {location.address || "위치 정보가 확인되지 않았습니다."}
-              </S.UserLocation>
+              <p>위도: {location.coordinates.lat}, 경도: {location.coordinates.lng}</p>
+              <p>현재 위치: {location.address || "위치 정보를 확인할 수 없습니다."}</p>
             </>
           )
-        ) : (
-          <>
-            <p>위 버튼을 눌러 위치 정보를 불러와 주세요. </p>
-            <p>위치 정보에 맞는 시설을 추려서 보여드릴게요 !</p>
-          </>
-        )}
+        ) : <p>위 버튼을 눌러 위치 정보를 불러와 주세요.</p>}
       </div>
     </S.GeoLocationContainer>
   );
