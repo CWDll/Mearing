@@ -25,6 +25,12 @@ const SignIn: React.FunctionComponent = () => {
     console.log("Email:", email);
     console.log("Password:", password);
     alert("로그인 정보:" + email + password);
+
+    // 로그인 API 성공시
+    // navigate("/main");
+
+    // 로그인 API 실패시
+    // alert("이메일과 비밀먼호를 확인해주세요.");
   };
 
   function handleSignUp() {
