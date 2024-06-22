@@ -6,33 +6,6 @@ import TitleBar from "../../components/common/TitleBar";
 
 import { PrimaryButton, SecondaryButton } from "../../components/common/Button";
 
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-`;
-
-export const FormGroup = styled.div`
-  margin-bottom: 15px;
-`;
-
-export const Label = styled.label`
-  margin-bottom: 5px;
-  font-weight: bold;
-`;
-
-export const Input = styled.input`
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-`;
-
 const SignIn: React.FunctionComponent = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
@@ -61,19 +34,19 @@ const SignIn: React.FunctionComponent = () => {
   return (
     <S.SignInContainer>
       <TitleBar title="로그인" />
-      <Form onSubmit={handleSubmit}>
-        <FormGroup>
-          <Label>Email:</Label>
-          <Input type="email" value={email} onChange={handleEmailChange} />
-        </FormGroup>
-        <FormGroup>
-          <Label>Password:</Label>
-          <Input
+      <S.Form onSubmit={handleSubmit}>
+        <S.FormGroup>
+          <S.Label>Email:</S.Label>
+          <S.Input type="email" value={email} onChange={handleEmailChange} />
+        </S.FormGroup>
+        <S.FormGroup>
+          <S.Label>Password:</S.Label>
+          <S.Input
             type="password"
             value={password}
             onChange={handlePasswordChange}
           />
-        </FormGroup>
+        </S.FormGroup>
         <S.ButtonContainer>
           <PrimaryButton
             onClick={handleSubmit}
@@ -87,7 +60,7 @@ const SignIn: React.FunctionComponent = () => {
             children="회원가입"
           />
         </S.ButtonContainer>
-      </Form>
+      </S.Form>
     </S.SignInContainer>
   );
 };

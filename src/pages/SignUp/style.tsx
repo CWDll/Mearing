@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SignInContainer = styled.div`
+export const SignUpContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,7 +9,6 @@ export const SignInContainer = styled.div`
   border: 1px dotted black;
   background-color: #f0f0f0;
   padding: 20px;
-  margin-bottom: 3em;
 `;
 
 export const Form = styled.form`
@@ -39,8 +38,19 @@ export const Input = styled.input`
   box-sizing: border-box;
 `;
 
-export const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 1em;
+export const Title = styled.h2`
+  margin-bottom: 20px;
+`;
+
+export const SubmitButton = styled.button`
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0056b3;
+  }
 `;
