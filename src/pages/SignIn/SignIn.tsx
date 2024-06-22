@@ -1,20 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import * as S from "./style";
 import TitleBar from "../../components/common/TitleBar";
 
-import { PrimaryButton } from "../../components/common/Button";
-
-export const SignInContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  justify-content: center;
-  border: 1px dotted black;
-  background-color: #f0f0f0;
-  padding: 20px;
-`;
+import { PrimaryButton, SecondaryButton } from "../../components/common/Button";
 
 export const Form = styled.form`
   display: flex;
@@ -44,6 +34,7 @@ export const Input = styled.input`
 `;
 
 const SignIn: React.FunctionComponent = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -63,8 +54,12 @@ const SignIn: React.FunctionComponent = () => {
     alert("로그인 정보:" + email + password);
   };
 
+  function handleSignUp() {
+    navigate("/signup");
+  }
+
   return (
-    <SignInContainer>
+    <S.SignInContainer>
       <TitleBar title="로그인" />
       <Form onSubmit={handleSubmit}>
         <FormGroup>
@@ -79,14 +74,21 @@ const SignIn: React.FunctionComponent = () => {
             onChange={handlePasswordChange}
           />
         </FormGroup>
-        <PrimaryButton
-          onClick={handleSubmit}
-          disabled={false}
-          children="로그인하기"
-          type="submit"
-        />
+        <S.ButtonContainer>
+          <PrimaryButton
+            onClick={handleSubmit}
+            disabled={false}
+            children="로그인하기"
+            type="submit"
+          />
+          <SecondaryButton
+            onClick={handleSignUp}
+            disabled={false}
+            children="회원가입"
+          />
+        </S.ButtonContainer>
       </Form>
-    </SignInContainer>
+    </S.SignInContainer>
   );
 };
 

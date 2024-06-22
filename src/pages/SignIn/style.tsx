@@ -8,4 +8,12 @@ export const SignInContainer = styled.div`
   justify-content: center;
   border: 1px dotted black;
   background-color: #f0f0f0;
+  padding: 20px;
+  margin-bottom: 3em;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
 `;
