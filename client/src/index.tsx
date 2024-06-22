@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import { GlobalStyle } from "./shared/global";
+
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createRoot } from "react-dom/client";
 import { ThemeProvider } from "styled-components";
 // global-setting
-import { GlobalStyle } from "./shared/global";
 import theme from "./shared/theme";
 
 const container = document.getElementById("root");
