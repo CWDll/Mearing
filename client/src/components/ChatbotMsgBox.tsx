@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import axios from "axios";
 
 // reacticons 사용
 import { HiSpeakerWave } from "react-icons/hi2";
@@ -10,6 +11,8 @@ interface ChatbotMsgBoxType {
   writer: string;
   date: string;
   content: string;
+  question?: string;
+  answer?: string;
 }
 
 // 속성 중 writer의 값 지정
@@ -62,13 +65,32 @@ const ContentUserActionButtonConateinr = styled.div`
 
 const ChatbotMsgBox: React.FC<ChatbotMsgBoxProps> = (props) => {
   // SAVE 버튼 클릭 이벤트
-  const saveButtonClicked = () => {
-    alert("현재 메세지를 저장합니다.");
+  const saveButtonClicked = async () => {
+    try {
+      const email = localStorage.getItem("userEmail"); // 로컬 스토리지에서 이메일 가져오기
+      const response = await axios.post("http://localhost:5000/api/save_chat", {
+        email: email,
+        question: props.question, // 질문 내용을 사용
+        answer: props.answer, // 답변 내용을 사용
+        date: props.date,
+      });
+      alert("현재 메세지를 저장합니다.");
+    } catch (error) {
+      console.error("Error saving chat:", error);
+    }
   };
 
   // TTS 버튼 클릭 이벤트
-  const ttsButtonClicked = () => {
-    alert("현재 메세지를 음성으로 변환합니다.");
+  const ttsButtonClicked = async () => {
+    try {
+      const response = await axios.post("http://localhost:5000/api/tts_chat", {
+        text: props.content,
+      });
+      const audio = new Audio(response.data.url);
+      audio.play();
+    } catch (error) {
+      console.error("Error converting text to speech:", error);
+    }
   };
 
   return (
