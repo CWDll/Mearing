@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import axios from "axios";
 import * as S from "./style";
 import TitleBar from "../../components/common/TitleBar";
-
 import { PrimaryButton, SecondaryButton } from "../../components/common/Button";
 
 const SignIn: React.FunctionComponent = () => {
@@ -19,18 +18,22 @@ const SignIn: React.FunctionComponent = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // 로그인 핸들러 추가
-    console.log("Email:", email);
-    console.log("Password:", password);
-    alert("로그인 정보:" + email + password);
-
-    // 로그인 API 성공시
-    // navigate("/main");
-
-    // 로그인 API 실패시
-    // alert("이메일과 비밀먼호를 확인해주세요.");
+    try {
+      const response = await axios.post("http://localhost:5000/api/signin", {
+        email,
+        password,
+      });
+      console.log(response.data);
+      if (response.status === 200) {
+        localStorage.setItem("userEmail", email); // 이메일을 로컬 스토리지에 저장
+        navigate("/main");
+      }
+    } catch (error) {
+      console.error("There was an error signing in!", error);
+      alert("이메일과 비밀번호를 확인해주세요.");
+    }
   };
 
   function handleSignUp() {

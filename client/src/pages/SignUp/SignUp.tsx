@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import * as S from "./style";
 import TitleBar from "../../components/common/TitleBar";
 import { PrimaryButton } from "../../components/common/Button";
@@ -17,11 +18,18 @@ const SignUp: React.FC = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // 회원가입 API 동작 추가
-    console.log("Email:", email);
-    console.log("Password:", password);
+    try {
+      const response = await axios.post("http://localhost:5000/api/signup", {
+        email,
+        password,
+      });
+      console.log(response.data);
+      navigate("/");
+    } catch (error) {
+      console.error("There was an error signing up!", error);
+    }
   };
 
   function handleSignIn() {
