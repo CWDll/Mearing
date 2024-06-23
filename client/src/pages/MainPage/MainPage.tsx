@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import * as S from "./style";
 import { useNavigate } from "react-router-dom";
 
@@ -9,6 +10,8 @@ import ContentBox from "../../components/ContentBox";
 
 const MainPage: React.FC = () => {
   const navigate = useNavigate();
+  const [savedChats, setSavedChats] = useState<DateData[]>([]);
+
   // 버튼 클릭 이벤트
   const handleClick = (): void => {
     alert("Button clicked!");
@@ -41,20 +44,23 @@ const MainPage: React.FC = () => {
   interface DateData {
     type: "date";
     date: string;
-    content: string;
+    question: string;
+    answer: string;
   }
 
-  // 날짜 타입 더미 데이터만 생성
-  const dummyData: DateData[] = [
-    { type: "date", date: "2024-05-13", content: "오늘의 할 일" },
-    { type: "date", date: "2024-05-14", content: "내일의 할 일" },
-    { type: "date", date: "2024-05-15", content: "프로젝트 마감일" },
-    { type: "date", date: "2024-05-16", content: "진행할 미팅 준비" },
-    { type: "date", date: "2024-05-17", content: "친구와 약속" },
-    { type: "date", date: "2024-05-18", content: "가족 행사 참석" },
-    { type: "date", date: "2024-05-19", content: "책 읽기" },
-    { type: "date", date: "2024-05-20", content: "신규 프로젝트 미팅" },
-  ];
+  // /api/main_chat 호출하여 데이터 가져오기
+  useEffect(() => {
+    const fetchSavedChats = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/main_chat");
+        setSavedChats(response.data);
+      } catch (error) {
+        console.error("Failed to fetch saved chats:", error);
+      }
+    };
+
+    fetchSavedChats();
+  }, []);
 
   // chatbot버튼 클릭 이벤트
   const goToChatbotPage = (): void => {
@@ -73,13 +79,16 @@ const MainPage: React.FC = () => {
       <p>대화를 시작하려면 "대화하기"를,</p>
       <p>주변 복지 시설의 정보를 원하시면</p>
       <p>"시설 보기"버튼을 눌러주세요.</p>
-      {/* map 함수를 사용하여 더미데이터(저장한 채팅 내역)을 넣을 예정 */}
+      {/* map 함수를 사용하여 저장된 채팅 내역을 표시 */}
       <S.SavedChatContainer>
-        {/* <S.ContentWrapper> */}
-        {dummyData.map((item, index) => (
-          <ContentBox key={index} date={item.date} content={item.content} />
+        {savedChats.map((item, index) => (
+          <ContentBox
+            key={index}
+            date={item.date}
+            content={item.question}
+            answer={item.answer}
+          />
         ))}
-        {/* </S.ContentWrapper> */}
       </S.SavedChatContainer>
       <S.ButtonContainer>
         <PrimaryButton
