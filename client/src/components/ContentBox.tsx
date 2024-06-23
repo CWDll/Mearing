@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 interface DateContentProps {
   date: string;
   content: string;
+  answer: string;
 }
 
 interface ContactInfoProps {
@@ -40,6 +41,7 @@ const isContactInfoProps = (props: any): props is ContactInfoProps => {
 };
 
 const ContentBox: React.FC<ContentBoxProps> = (props) => {
+  console.log(props); // props의 값 로깅
   return (
     <ContentBoxWrapper type={isDateContentProps(props) ? "date" : "contact"}>
       {isDateContentProps(props) && (
